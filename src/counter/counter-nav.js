@@ -1,11 +1,13 @@
 import React from "react"
-
-export const CounterNav = ({ count, setCount }) => {
+import { useDispatch } from "react-redux"
+import {increase, decrease, reset} from '../redux'
+export const CounterNav = () => {
+  const dispatch = useDispatch()
   return (
     <div className="counter-nav">
       <button
         onClick={() => {
-          setCount(count - 1)
+          dispatch(decrease())
         }}
       >
         Decrease
@@ -13,7 +15,8 @@ export const CounterNav = ({ count, setCount }) => {
 
       <button
         onClick={() => {
-          setCount(0)
+          dispatch(reset())
+
         }}
       >
         Reset
@@ -21,7 +24,7 @@ export const CounterNav = ({ count, setCount }) => {
 
       <button
         onClick={() => {
-          setCount(count + 1)
+          dispatch(increase())          
         }}
       >
         Increase
